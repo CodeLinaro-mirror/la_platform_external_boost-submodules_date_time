@@ -9,6 +9,12 @@
  * $Date$
  */
 
+/* Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ *
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ * SPDX-License-Identifier: BSD-3-Clause-Clear
+ */
+
 #include <boost/date_time/constrained_value.hpp>
 #include <boost/date_time/date_defs.hpp>
 #include <boost/date_time/compiler_config.hpp>
@@ -49,6 +55,10 @@ namespace gregorian {
     BOOST_CXX14_CONSTEXPR weekday_enum as_enum() const {return static_cast<weekday_enum>(value_);}
 
     //! Return a 3 digit english string of the day of week (eg: Sun)
+    const char* as_short_string() const;
+    // redefinition error -as_short_string()
+    // as_short_string() redefined in greq_weekday.cpp
+#if 0
     const char* as_short_string() const
     {
       static const char* const short_weekday_names[]
@@ -56,8 +66,13 @@ namespace gregorian {
 
       return short_weekday_names[value_];
     }
+#endif
 
     //! Return a point to a long english string representing day of week
+    const char* as_long_string() const;
+    // redefinition error - as_long_string()
+    // as_long_string() redefined in greq_weekday.cpp
+#if 0
     const char* as_long_string() const
     {
       static const char* const long_weekday_names[]
@@ -65,19 +80,28 @@ namespace gregorian {
 
       return long_weekday_names[value_];
     }
-
+#endif
 
 #ifndef BOOST_NO_STD_WSTRING
 
     //! Return a 3 digit english wchar_t string of the day of week (eg: Sun)
+    const wchar_t* as_short_wstring() const;
+    // redefinition error - as_short_wstring()
+    // as_short_wstring() redefined in greq_weekday.cpp
+#if 0
     const wchar_t* as_short_wstring() const
     {
       static const wchar_t* const w_short_weekday_names[]={L"Sun", L"Mon", L"Tue",
                                                            L"Wed", L"Thu", L"Fri", L"Sat"};
       return w_short_weekday_names[value_];
     }
+#endif
 
     //! Return a point to a long english wchar_t string representing day of week
+    const wchar_t* as_long_wstring()  const;
+    // redefinition error - as_long_wstring()
+    // as_long_wstring() redefined in greq_weekday.cpp
+#if 0
     const wchar_t* as_long_wstring()  const
     {
       static const wchar_t* const w_long_weekday_names[]= {L"Sunday",L"Monday",L"Tuesday",
@@ -85,6 +109,7 @@ namespace gregorian {
                                                            L"Friday", L"Saturday"};
       return w_long_weekday_names[value_];
     }
+#endif
 
 #endif // BOOST_NO_STD_WSTRING
 

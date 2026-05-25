@@ -9,6 +9,12 @@
  * $Date$
  */
 
+/* Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ *
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ * SPDX-License-Identifier: BSD-3-Clause-Clear
+ */
+
 /*! @file date_generators.hpp
   Definition and implementation of date algorithm templates
 */
@@ -154,6 +160,10 @@ namespace date_time {
  };
 
   //! Returns nth arg as string. 1 -> "first", 2 -> "second", max is 5.
+  inline const char* nth_as_str(int ele);
+  // redefinition error - nth_as_str()
+  // nth_as_str() redefined in date_generators.cpp
+#if 0
   inline const char* nth_as_str(int ele)
   {
     static const char* const _nth_as_str[] = {"out of range", "first", "second",
@@ -165,7 +175,7 @@ namespace date_time {
       return _nth_as_str[0];
     }
   }
-
+#endif
   //! Useful generator functor for finding holidays
   /*! Based on the idea in Cal. Calc. for finding holidays that are
    *  the 'first Monday of September'. When instantiated with
